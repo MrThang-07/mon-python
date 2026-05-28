@@ -1,0 +1,48 @@
+#  Câu 1 
+
+dongia = int(input("Nhập đơn giá của một sản phầm: "))
+soluong = int(input("Nhập số lượng mua :"))
+tongtien = dongia * soluong 
+if tongtien >= 1000000 :
+    tongtien = (tongtien - tongtien * 0.1 )
+else :
+    tongtien = (tongtien - tongtien * 0)
+print("Số tiền khách phải thanh toán là : ",tongtien)
+
+#  Câu 2 
+
+matkhau = 123456
+flag = 0 
+while True :
+    nhap_mk = int(input("Nhập mật khẩu :"))
+    if nhap_mk == matkhau :
+        print("Đăng nhập thành công !")
+        break 
+    else :
+        flag = flag + 1 
+        if flag == 3 :
+            print("Tài khoản đã bị khóa!")
+            break
+        else :  
+            print("Mật khẩu sai, vui lòng nhập lại !")
+# CAU 3 
+cout = 0
+hople = 0 
+thunghang = int(input("Nhập số thùng :"))
+for i in range(1,thunghang + 1):
+    print(f"Thêm số lượng thùng hàng {i} : ")
+    soluong = int(input("Nhập so luong : "))
+    if soluong < 0 :
+        print("Số lượng không hợp lệ, bỏ qua thùng này!")
+    elif soluong == 0 :
+        hople += 1
+        continue 
+    else :
+        hople += 1
+        cout = cout + soluong 
+print("Tổng số thùng hàng hợp lệ :",hople)
+print("Tổng số lượng sản phẩm thu được : ",cout)
+
+
+
+    
