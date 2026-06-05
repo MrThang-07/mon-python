@@ -35,6 +35,7 @@ while True :
                 print("Bãi xe hiện đang trống !")
             else:
                 print(f"{'ID':<5}| {'Loai xe':<10}| {'Chu xe':<10}")
+                print("-"*30)
                 for item in list_parking:
                     print(f"{item["id"]:<5}| {item["type"]:<10}| {item["owner"]:<10}")
         case "3":
