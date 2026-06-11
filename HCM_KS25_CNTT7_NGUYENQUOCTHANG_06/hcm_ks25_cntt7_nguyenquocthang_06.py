@@ -3,7 +3,7 @@ list_booking =[
 ]
 
 def validate_time(fist,last):
-    sum_time = fist + last 
+    sum_time = last - fist 
     if sum_time < 2:
         phanloai = "Ngắn"
     elif sum_time < 4:
