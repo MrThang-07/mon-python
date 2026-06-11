@@ -108,11 +108,11 @@ def thongke_room(booking):
     count_d = 0
     count_q = 0
     for item in booking:
-        if item["sum_time"] == "Ngắn":
+        if item["phanloai"] == "Ngắn":
             count_n += 1
-        elif item["sum_time"] == "Tiêu chuẩn":
+        elif item["phanloai"] == "Tiêu chuẩn":
             count_t += 1
-        elif item["sum_time"] == "Dài":
+        elif item["phanloai"] == "Dài":
             count_d += 1
         else:
             count_q += 1
