@@ -40,6 +40,7 @@ def add_player(player):
     input_id = input("Nhập id cầu thủ cần thêm : ").strip().upper()
     if len(input_id) == 0:
         print("Mã cầu thủ không được để trống !")
+        return
     for item in player:
         if input_id == item["id"]:
             print("Đã bị trùng id !")
