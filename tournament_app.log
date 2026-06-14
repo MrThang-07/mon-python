@@ -1,0 +1,19 @@
+[2026-06-14 21:58:43,814] - [INFO] - User viewed the match list.
+[2026-06-14 21:59:05,620] - [WARNING] - Invalid menu choice selected.
+[2026-06-14 21:59:51,586] - [WARNING] - User tried to add a match with empty match ID.
+[2026-06-14 22:00:37,147] - [WARNING] - User tried to add a match with empty team name.
+[2026-06-14 22:01:23,432] - [WARNING] - User tried to update non-existing match m01
+[2026-06-14 22:01:39,315] - [WARNING] - User tried to update non-existing match m01
+[2026-06-14 22:02:08,216] - [WARNING] - User tried to update non-existing match MO1
+[2026-06-14 22:02:14,369] - [ERROR] - Invalid score input. Error: invalid literal for int() with base 10: ''
+[2026-06-14 22:02:18,060] - [ERROR] - Invalid score input. Error: invalid literal for int() with base 10: ''
+[2026-06-14 22:02:21,363] - [ERROR] - Invalid score input. Error: invalid literal for int() with base 10: 'ba'
+[2026-06-14 22:02:25,086] - [ERROR] - Invalid score input. Error: invalid literal for int() with base 10: ''
+[2026-06-14 22:02:26,840] - [ERROR] - Invalid score input. Error: invalid literal for int() with base 10: 'e'
+[2026-06-14 22:02:28,696] - [INFO] - Match M01 score updated successfully.
+[2026-06-14 22:02:31,395] - [INFO] - User viewed the match list.
+[2026-06-14 22:02:57,278] - [ERROR] - Negative score input detected: -111111
+[2026-06-14 22:03:01,271] - [ERROR] - Negative score input detected: -22
+[2026-06-14 22:03:02,840] - [INFO] - Match M01 score updated successfully.
+[2026-06-14 22:03:11,586] - [WARNING] - User tried to update non-existing match MMMM
+[2026-06-14 22:03:28,168] - [INFO] - User generated tournament report.

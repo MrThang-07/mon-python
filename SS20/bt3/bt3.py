@@ -131,7 +131,7 @@ def get_valid_score(prompt):
 def update_score(match_list):
    
     print("\n--- CẬP NHẬT TỶ SỐ TRẬN ĐẤU ---")
-    match_id = input("Nhập mã trận đấu cần cập nhật: ").strip()
+    match_id = input("Nhập mã trận đấu cần cập nhật: ").strip().upper()
     
     target_match = None
     for match in match_list:
