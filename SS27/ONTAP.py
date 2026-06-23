@@ -1,26 +1,16 @@
 class Student:
-    """Lớp sinh viên: Quản lý dữ liệu và logic tính toán của một cá nhân"""
-    
     def __init__(self, student_id, name, theory_score, practice_score, project_score):
         self.id = student_id
         self.name = name
         self.theory_score = theory_score
         self.practice_score = practice_score
         self.project_score = project_score
-        
-        # Các thuộc tính này được tính tự động, không nhập từ bàn phím
         self.final_score = 0.0
         self.academic_rank = ""
-        
-        # Gọi hàm tính điểm và xếp loại ngay khi khởi tạo
         self.update_academic_info()
-
     def calculate_final_score(self):
-        """Tính điểm tổng kết theo trọng số"""
         self.final_score = (self.theory_score * 0.2) + (self.practice_score * 0.3) + (self.project_score * 0.5)
-
     def classify_academic_rank(self):
-        """Phân loại học lực dựa trên điểm tổng kết"""
         if self.final_score < 5.0:
             self.academic_rank = "Yếu"
         elif self.final_score < 7.0:
@@ -28,30 +18,20 @@ class Student:
         elif self.final_score < 8.5:
             self.academic_rank = "Khá"
         else:
-            self.academic_rank = "Giỏi"
-            
+            self.academic_rank = "Giỏi"  
     def update_academic_info(self):
-        """Hàm gộp để tự động cập nhật lại điểm và học lực (Tính đóng gói)"""
         self.calculate_final_score()
         self.classify_academic_rank()
 
-
 class StudentManager:
-    """Lớp quản lý: Chịu trách nhiệm quản lý danh sách và các thao tác CRUD"""
-    
     def __init__(self):
-        # Sử dụng List để lưu đối tượng sinh viên theo yêu cầu
         self.students = []
-
     def is_id_exist(self, student_id):
-        """Hàm hỗ trợ: Kiểm tra mã sinh viên đã tồn tại chưa"""
         for s in self.students:
             if s.id == student_id:
                 return True
         return False
-
     def input_score(self, prompt_text):
-        """Hàm hỗ trợ: Nhập và kiểm tra lỗi điểm số (0.0 -> 10.0)"""
         while True:
             try:
                 score = float(input(prompt_text).strip())
@@ -67,20 +47,15 @@ class StudentManager:
         if not self.students:
             print(">> Danh sách sinh viên hiện đang trống.")
             return
-            
         print("-" * 105)
         print(f"{'Mã SV':<10} | {'Họ tên':<20} | {'Lý Thuyết':<10} | {'Thực Hành':<10} | {'Đồ Án':<10} | {'Tổng Kết':<10} | {'Học Lực':<10}")
         print("-" * 105)
-        
         for s in self.students:
             print(f"{s.id:<10} | {s.name:<20} | {s.theory_score:<10.1f} | {s.practice_score:<10.1f} | {s.project_score:<10.1f} | {s.final_score:<10.2f} | {s.academic_rank:<10}")
         print("-" * 105)
-
     def add_student(self):
         """Chức năng 2: Thêm sinh viên mới"""
         print("\n--- THÊM SINH VIÊN MỚI ---")
-        
-        # Validate Mã SV
         while True:
             student_id = input("Nhập Mã SV: ").strip()
             if not student_id:
@@ -90,27 +65,20 @@ class StudentManager:
                 print(">> Lỗi: Mã SV đã tồn tại trong hệ thống!")
                 continue
             break
-
-        # Validate Họ tên
         while True:
             name = input("Nhập Họ tên: ").strip()
             if not name:
                 print(">> Lỗi: Họ tên không được để rỗng!")
                 continue
             break
-
-        # Sử dụng hàm hỗ trợ để nhập điểm an toàn
         theory = self.input_score("Nhập Điểm Lý thuyết (0-10): ")
         practice = self.input_score("Nhập Điểm Thực hành (0-10): ")
         project = self.input_score("Nhập Điểm Đồ án (0-10): ")
-
-        # Khởi tạo đối tượng và đưa vào mảng
         new_student = Student(student_id, name, theory, practice, project)
         self.students.append(new_student)
         print(f">> Thành công: Đã thêm sinh viên {name} vào hệ thống!")
 
     def update_student(self):
-        """Chức năng 3: Cập nhật thông tin sinh viên"""
         print("\n--- CẬP NHẬT ĐIỂM SINH VIÊN ---")
         student_id = input("Nhập Mã SV cần cập nhật: ").strip()
         
@@ -120,31 +88,26 @@ class StudentManager:
                 s.theory_score = self.input_score("Nhập Điểm Lý thuyết mới: ")
                 s.practice_score = self.input_score("Nhập Điểm Thực hành mới: ")
                 s.project_score = self.input_score("Nhập Điểm Đồ án mới: ")
-                
-                # Bắt buộc gọi hàm tính lại để đảm bảo tính đóng gói
+
                 s.update_academic_info()
                 print(">> Thành công: Đã cập nhật điểm và xét lại học lực!")
-                return
-                
+                return  
         print(">> Lỗi: Không tồn tại mã sinh viên này trong hệ thống!")
 
     def delete_student(self):
-        """Chức năng 4: Xóa sinh viên"""
         print("\n--- XÓA SINH VIÊN ---")
         student_id = input("Nhập Mã SV cần xóa: ").strip()
-        
-        for index, s in enumerate(self.students):
+        for s in self.students:  
             if s.id == student_id:
                 confirm = input(f"Bạn có chắc muốn xóa sinh viên '{s.name}' không? (Y/N): ").strip().lower()
                 if confirm == 'y':
-                    del self.students[index]
+                    self.students.remove(s)  
                     print(">> Thành công: Đã xóa sinh viên khỏi hệ thống!")
                 else:
                     print(">> Đã hủy thao tác xóa.")
                 return
                 
         print(">> Lỗi: Không tồn tại mã sinh viên này trong hệ thống!")
-
     def search_student(self):
         """Chức năng 5: Tìm kiếm sinh viên theo tên gần đúng"""
         print("\n--- TÌM KIẾM SINH VIÊN ---")
@@ -166,11 +129,8 @@ class StudentManager:
                 print(f"{s.id:<10} | {s.name:<20} | {s.theory_score:<10.1f} | {s.practice_score:<10.1f} | {s.project_score:<10.1f} | {s.final_score:<10.2f} | {s.academic_rank:<10}")
             print("-" * 105)
 
-
 def main():
-    """Hàm main điều hướng Menu (Clean Code)"""
     manager = StudentManager()
-    
     while True:
         print("\n================ MENU ================")
         print("1. Hiển thị danh sách sinh viên")
@@ -180,9 +140,7 @@ def main():
         print("5. Tìm kiếm sinh viên theo tên")
         print("6. Thoát")
         print("=====================================")
-        
         choice = input("Nhập lựa chọn của bạn (1-6): ").strip()
-        
         if choice == "1":
             manager.show_all()
         elif choice == "2":
@@ -199,6 +157,5 @@ def main():
         else:
             print(">> Lỗi: Lựa chọn không hợp lệ. Vui lòng nhập số từ 1 đến 6.")
 
-# Chạy chương trình
 if __name__ == "__main__":
     main()
