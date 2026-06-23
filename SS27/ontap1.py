@@ -70,9 +70,9 @@ class StudentManager:
         input_id = input("Nhập mã sinh viên cần cập nhật : ").strip().upper()
         for i in self.students:
             if input_id == i.id:
-                i.theory_score = self.is_number("Vui lòng nhập điểm lý thuyết : ").strip()
-                i.practice_score = self.is_number("Vui lòng nhập điểm thực hành : ").strip()
-                i.project_score = self.is_number("Vui lòng nhập điểm đồ án : ").strip()
+                i.theory_score = self.is_number("Vui lòng nhập điểm lý thuyết : ")
+                i.practice_score = self.is_number("Vui lòng nhập điểm thực hành : ")
+                i.project_score = self.is_number("Vui lòng nhập điểm đồ án : ")
                 i.update_score_rank()
                 print(">> Thành công: Đã cập nhật điểm và xét lại học lực!")
                 return 
@@ -92,14 +92,14 @@ class StudentManager:
         list_name = []
         share_name = input("Tìm kiếm tên gần đúng : ").strip().upper()
         for i in self.students:
-            if share_name in i.name:
+            if share_name in i.name.upper():
                 list_name += [i]
-        for i in list_name:
-            if list_name:
+        if not list_name:
+            print("Hiện kh tìm thấy thông tin sv nào !")
+        else:
+            for i in list_name:
                 print("-"*38)
                 print(f"{i.id:<10} | {i.name:<20}|{i.theory_score:<20}|{i.practice_score:<20}| {i.project_score:<20}| {i.final_score:<20}| {i.academic_rank:<15}|")
-            else:
-                print("Hiện kh tìm thấy thông tin sv nào !")
 
         
 def main():
@@ -119,7 +119,7 @@ def main():
         match (choice):
             case "1":
                 manager.show_all()
-            case "2":
+            case "2": 
                 manager.add_student()
             case "3":
                 manager.update_student()
@@ -132,6 +132,5 @@ def main():
                 return
             case _:
                 print("Vui lòng nhập lại từ 1 - 6 !")
-                return
 if __name__ == "__main__":
     main()
