@@ -52,10 +52,10 @@ class InventoryManager:
         if not self.items:
             print("Danh sách hàng hóa đang rỗng!")
             return
-        print(f"{'Mã hàng hóa':<15}| {'Tên hàng hóa':<15}| {'Danh mục':<15}| {'Số lượng tồn kho':<25}| {'Đơn giá nhập':<15}| {'Chi phí lưu kho':<25}| {'Tổng giá trị tồn kho':<25}| {'Phân loại tồn kho':<25}|")
+        print(f"{'Mã hàng hóa':<15}| {'Tên hàng hóa':<15}| {'Danh mục':<15}| {'Số lượng tồn kho':<25}| {'Đơn giá nhập':<15}| {'Chi phí lưu kho':<20}| {'Tổng giá trị tồn kho':<25}| {'Phân loại tồn kho':<25}|")
         for i in self.items:
-            print("-"*38)
-            print(f"{i.id:<15}| {i.name:<15}| {i.category:<15}| {i.quantity:<25}| {i.unit_price:<15}| {i.storage_fee:<25}| {i.total_inventory_value:<25}| {i.inventory_type:<25}|")
+            print("-"*160)
+            print(f"{i.id:<15}| {i.name:<15}| {i.category:<15}| {i.quantity:<25}| {i.unit_price:<15}| {i.storage_fee:<20}| {i.total_inventory_value:<25}| {i.inventory_type:<25}|")
     def add_item(self):
         input_id = input("Nhập mã hàng hóa : ").strip().upper()
         if not input_id:
@@ -117,9 +117,10 @@ class InventoryManager:
                 print("Hiện không thấy hàng hóa nào!")
                 return
             else:
+                print(f"{'Mã hàng hóa':<15}| {'Tên hàng hóa':<15}| {'Danh mục':<15}| {'Số lượng tồn kho':<25}| {'Đơn giá nhập':<15}| {'Chi phí lưu kho':<20}| {'Tổng giá trị tồn kho':<25}| {'Phân loại tồn kho':<25}|")
                 for i in search_list:
-                    print("-"*38)
-                    print(f"{i.id:<15}| {i.name:<15}| {i.category:<15}| {i.quantity:<25}| {i.unit_price:<15}| {i.storage_fee:<25}| {i.total_inventory_value:<25}| {i.inventory_type:<25}|")
+                    print("-"*160)
+                    print(f"{i.id:<15}| {i.name:<15}| {i.category:<15}| {i.quantity:<25}| {i.unit_price:<15}| {i.storage_fee:<20}| {i.total_inventory_value:<25}| {i.inventory_type:<25}|")
 
         elif input_choice == "2":
             search_category = input("Nhập tên hàng hóa cần tìm kiếm : ").strip().upper()
@@ -130,9 +131,10 @@ class InventoryManager:
                 print("Hiện không thấy hàng hóa nào!")
                 return
             else:
+                print(f"{'Mã hàng hóa':<15}| {'Tên hàng hóa':<15}| {'Danh mục':<15}| {'Số lượng tồn kho':<25}| {'Đơn giá nhập':<15}| {'Chi phí lưu kho':<20}| {'Tổng giá trị tồn kho':<25}| {'Phân loại tồn kho':<25}|")
                 for i in search_list:
-                    print("-"*38)
-                    print(f"{i.id:<15}| {i.name:<15}| {i.category:<15}| {i.quantity:<25}| {i.unit_price:<15}| {i.storage_fee:<25}| {i.total_inventory_value:<25}| {i.inventory_type:<25}|")
+                    print("-"*160)
+                    print(f"{i.id:<15}| {i.name:<15}| {i.category:<15}| {i.quantity:<25}| {i.unit_price:<15}| {i.storage_fee:<20}| {i.total_inventory_value:<25}| {i.inventory_type:<25}|")
         else:
             print("Vui lòng chọn 1 hoặc 2!")
             return
